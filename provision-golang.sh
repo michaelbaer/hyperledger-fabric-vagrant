@@ -36,3 +36,8 @@ chmod +x /usr/local/bin/docker-compose
 echo "Add user vagrant to group docker"
 sudo gpasswd -a vagrant docker
 newgrp docker
+
+# Add hyperledger fabrice platform specific binaries
+echo "Add hyperledger fabrice platform specific binaries"
+cd /home/vagrant/gopath
+curl -sSL https://goo.gl/eYdRbX | bash
