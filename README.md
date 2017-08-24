@@ -12,3 +12,5 @@
 
     Vagrant has to be installed on your operating system.
 
+# Next steps
+    E.g. start with the hyperledger-fabrice samples from http://hyperledger-fabric.readthedocs.io/en/latest/samples.html and clone them into the /home/vagrant/gopath folder.
