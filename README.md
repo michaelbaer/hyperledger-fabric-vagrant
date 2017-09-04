@@ -29,5 +29,5 @@ E.g. start with the hyperledger-fabric samples from http://hyperledger-fabric.re
 I run into some issues if I try to install the node packages referenced within the fabcar sample.
 My solution was to install node-pre-gyp and semver globally and then run npm install from the fabcar directory with the --no-bin-links option.
     
-    sudo npm install node-pre-gyp semver -g
-    npm install --no-bin-links
+    vagrant@jessie:~$ sudo npm install node-pre-gyp semver -g
+    vagrant@jessie:~/gopath/fabric-samples/fabcar$ npm install --no-bin-links
