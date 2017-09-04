@@ -5,6 +5,7 @@ Install and setup a virtual machine as development environment to start with hyp
 * installs go
 * installs docker
 * installs docker-compose
+* installs nodejs and npm
 * hyperledger-fabric plattform specific binaries are installed and are added to the $PATH
 * content of go path is accessable from host
 
@@ -22,3 +23,11 @@ The easiest way for me to install VirtualBox Guest Additions was to install the 
 # Next steps
 
 E.g. start with the hyperledger-fabric samples from http://hyperledger-fabric.readthedocs.io/en/latest/samples.html and clone them into the /home/vagrant/gopath folder.
+
+# Run the fabcar example from hyperledger-fabric samples
+
+I run into some issues if I try to install the node packages referenced within the fabcar sample.
+My solution was to install node-pre-gyp and semver globally and then run npm install from the fabcar directory with the --no-bin-links option.
+    
+    sudo npm install node-pre-gyp semver -g
+    npm install --no-bin-links
