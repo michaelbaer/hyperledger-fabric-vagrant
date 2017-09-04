@@ -41,16 +41,10 @@ echo "Add user vagrant to group docker"
 sudo gpasswd -a vagrant docker
 newgrp docker
 
-
 # Add hyperledger fabrice platform specific binaries
 echo "Add hyperledger fabrice platform specific binaries"
 cd /home/vagrant/gopath
 curl -sSL https://goo.gl/eYdRbX | bash
-
-# Install dependencies for node-pre-gyp and semver globally
-echo "Install nodejs dependencies globally to run hyperledger node applications."
-npm install node-pre-gyp semver -g
-echo "Later run 'npm install --no-bin-links' to install node modules within fabcar example"
 
 # Provision completed!
 echo "Provision completed!"
