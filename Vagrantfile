@@ -67,7 +67,12 @@ Vagrant.configure("2") do |config|
     #   apt-get update
     #   apt-get install -y apache2
     # SHELL
-    config.vm.provision "shell", path: "provision-golang.sh"
+    # config.vm.provision "shell", inline: "echo Hello, World"
+    config.vm.provision "shell", path: "provision.sh", env: { 
+      "GO_VERSION" => "1.7.6",
+      "DOCKER_COMPOSE_VERSION" => "1.15.0",
+      "SETUP_NODE_VERSION" => "6.x",
+      "NPM_VERSION" => "3.10.10"
+    }
     config.vm.synced_folder "gopath", "/home/vagrant/gopath"
   end
-  

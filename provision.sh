@@ -1,10 +1,7 @@
 #!/bin/bash
 
-GO_VERSION=1.7.6
-DOCKER_COMPOSE_VERSION=1.15.0
-
-
-sudo apt-get update && apt-get install -y curl
+# general stuff
+sudo apt-get update && apt-get install -y curl build-essential
 
 # Install go
 echo "Downloading Go"
@@ -17,6 +14,13 @@ chmod -R 777 /home/vagrant/gopath
 echo 'export GOROOT="/home/vagrant/go"' >> /home/vagrant/.bashrc
 echo 'export GOPATH="/home/vagrant/gopath"' >> /home/vagrant/.bashrc
 echo 'export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"' >> /home/vagrant/.bashrc
+
+# Install nodejs
+echo "Download and install NodeJS $SETUP_NODE_VERSION"
+curl -sL https://deb.nodesource.com/setup_$SETUP_NODE_VERSION | bash -
+apt-get install -y nodejs
+echo "Install npm $NPM_VERSION"
+npm install npm@$NPM_VERSION -g
 
 # Install docker
 echo "Install Docker"
@@ -37,7 +41,16 @@ echo "Add user vagrant to group docker"
 sudo gpasswd -a vagrant docker
 newgrp docker
 
+
 # Add hyperledger fabrice platform specific binaries
 echo "Add hyperledger fabrice platform specific binaries"
 cd /home/vagrant/gopath
 curl -sSL https://goo.gl/eYdRbX | bash
+
+# Install dependencies for node-pre-gyp and semver globally
+echo "Install nodejs dependencies globally to run hyperledger node applications."
+npm install node-pre-gyp semver -g
+echo "Later run 'npm install --no-bin-links' to install node modules within fabcar example"
+
+# Provision completed!
+echo "Provision completed!"
